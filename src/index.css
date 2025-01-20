@@ -1,13 +1,114 @@
+@font-face {
+  font-family: "Libre Franklin";
+  src: url("./utils/fonts/LibreFranklin.ttf"), local("Libre Franklin");
+}
+
+@font-face {
+  font-family: "Libre Franklin Medium";
+  src: url("./utils/fonts/LibreFranklin-Medium.ttf"), local("Libre Franklin Medium");
+}
+
+@font-face {
+  font-family: "Libre Franklin Bold";
+  src: url("./utils/fonts/LibreFranklin-Bold.ttf"), local("Libre Franklin Bold");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("./utils/fonts/OpenSans.ttf"), local("Open Sans");
+}
+
+@font-face {
+  font-family: "Open Sans SemiBold";
+  src: url("./utils/fonts/OpenSans-Semibold.ttf"), local("Open Sans SemiBold");
+}
+
+
+@font-face {
+  font-family: "Poppins Bold";
+  src: url("./utils/fonts/Poppins-Bold.ttf"), local("Poppins Bold");
+}
+
+@font-face {
+  font-family: "Poppins Medium";
+  src: url("./utils/fonts/Poppins-Medium.ttf"), local("Poppins Medium");
+}
+
+@font-face {
+  font-family: "Poppins Regular";
+  src: url("./utils/fonts/Poppins-Regular.ttf"), local("Poppins Regular");
+}
+
+@font-face {
+  font-family: "Poppins SemiBold";
+  src: url("./utils/fonts/Poppins-SemiBold.ttf"), local("Poppins SemiBold");
+}
+
+@font-face {
+  font-family: "Circular Std Book Regular";
+  src: url("./utils/fonts/CircularStdBook-Regular.ttf"), local("Circular Std Book Regular");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Libre Franklin";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px !important;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: "Libre Franklin";
+}
+
+.date-range-picker {
+  width: 450px;
+  height: 49px;
+  /* UI Properties */
+  background: #f1f4ff 0% 0% no-repeat padding-box;
+  border: 1px solid #0ab39c;
+  border-radius: 4px;
+  opacity: 1;
+  color: #0ab39c;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 15px;
+}
+
+/* .date-range-picker .react-calendar {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 2555px;
+} */
+
+.react-daterange-picker__wrapper {
+  border: 0 !important;
+}
+
+.react-daterange-picker__clear-button {
+  color: #0ab39c;
+  display: none;
+}
+
+.react-daterange-picker__calendar-button {
+  order: -1;
+}
+
+#range-slider .range-slider__range {
+  background: #d32127;
+  transition: height 0.3s;
+}
+
+#range-slider .range-slider__thumb {
+  background: #dd0910;
+  transition: transform 0.3s;
+}
+
+#range-slider .range-slider__thumb[data-active] {
+  transform: translate(-50%, -50%) scale(1.25);
+}
+
+#range-slider .range-slider__range[data-active] {
+  height: 16px;
 }

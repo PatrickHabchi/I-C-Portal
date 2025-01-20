@@ -1,0 +1,352 @@
+.DigitalICAccount{
+    margin: 20px;
+
+    .ICTable {
+        padding: 20px;
+
+        .application-status{
+            display: flex;
+            gap: 20px;
+
+            .tabs{
+
+                .tab-button {
+                    font-family: Poppins Regular;
+                    font-size: 15px;
+                    padding: 7px 15px;
+                    border: 1px solid #373464;
+                    border-radius: 26px;
+                    background-color: #FFFFFF;
+                    color: #373464;
+                    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+                
+                    &:hover {
+                        background-color: #D7D7E1;
+                    }
+                
+                    &.active { 
+                        background-color: #D7D7E1; 
+                    }
+                }
+            }}                
+
+        .table{
+            width: 80%;
+            margin-top: 20px;
+            .filtering{
+                display: flex;
+                justify-content: flex-end;
+                gap: 20px;
+
+                .searchfiltering{
+                    .search {
+                        padding: 10px 25px;
+                        color: #464A53;
+                        font-family: Poppins Regular;
+                        background-color: white;
+                        border: 1px solid #DDDFE1;
+                        border-radius: 5px;
+                    }
+                }
+
+                .selectfiltering{
+                    .ddselect{
+                        padding: 12px 15px;
+                        width: 180px;
+                        font-size: 14px;
+                        font-family: Poppins Regular;
+                        color: #464A53;
+                        margin-left: 10px;
+                        border-radius: 5px;
+                        border: 1px solid #DDDFE1;
+                    }
+                }
+            }
+        }
+
+        .status {
+            width: 100%;
+            height: 25px;
+            border-radius: 3px;
+            text-align: center;
+            color: #fff;
+            padding-top: 2px;
+            margin: 0;
+            font-family: Poppins SemiBold;
+        }
+    
+        .PENDING {
+            color: #E2AB46;
+            background-color: #FCF6EA;
+        }
+    
+        .DOCUMENTS {
+            color: #C23431;
+            background-color: #F8E6E9;
+        }
+    
+        .CANCELLED {
+            color: #5E6A7A;
+            background-color: #EEF0F1;
+        }
+    
+        .NEW {
+            color: #3267AD;
+            background-color: #e8eef6;
+        }
+    
+        .COMPLETE {
+            color: #64BE67;
+            background-color: #e6f8e7;
+        }
+    }
+
+    .DigitalICAccountDetails{
+        margin: 20px;
+
+        .back {
+
+            .back-button {
+                padding: 10px 17px;
+                border: none;
+                background-color: #226D96;
+                color: white;
+                border-radius: 40px
+            }
+        }
+
+        .user-info {
+            display: flex;
+            background-color: white;
+            padding: 25px 30px;
+            margin-top: 40px;
+
+            .user-profile {
+                height: 149px;
+                width: 149px;
+                border: 3px solid #226D96;
+                margin-top: -50px;
+                border-radius: 100px;
+                margin-right: 65px;
+            }
+
+            .user-details{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .user-info-container{
+                    display: flex;
+                    gap: 100px;
+
+                    .user-basic-info{
+
+                        .user-name {
+                            color: #226D96;
+                            font-size: 19px;
+                            font-family: Circular Std Book Regular;
+                            margin-bottom: 10px;
+                        }
+
+                        .user-status{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 40%;
+                            height: 25px;
+                            border-radius: 3px;
+                            text-align: center;
+                            color: #fff;
+                            padding-top: 2px;
+                            margin: 0;
+                            font-family: Poppins SemiBold;
+                        }
+
+                    }
+                    
+                    .user-contact-info {
+                        display: flex;
+                        border-left: 1px solid #d4d4d483;
+                        border-right: 1px solid #d4d4d483;
+                        gap: 80px;
+                        height: 45px;
+                        .user-email {
+                            font-family: Circular Std Book Regular;
+                            font-size: 19px;
+                            color: #6A707E;
+                            margin-left: 10px;
+                        }
+
+                        .user-phonenumber {
+                            font-family: Circular Std Book Regular;
+                            font-size: 19px;
+                            color: #6A707E;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .main-container{
+                display: flex;
+                margin-top: 25px;
+                gap: 20px;
+
+            .entity-info-container {
+                width: 30%;
+                background-color: white;
+                box-shadow: 2px 3px 10px #7777771A;
+    
+                .entity-details {
+                    padding: 25px;
+    
+                    .entityID {
+                        margin-bottom: 45px;
+                        .id {
+                            color: #464A53;
+                            font-size: 30px;
+                            font-family: Circular Std Book Regular;
+                        }
+    
+                        .key {
+                            color: #464A53;
+                            font-size: 18px;
+                            font-family: Circular Std Book Regular;
+    
+                        }
+    
+                        .entity-cards {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 25px;
+    
+                            .custom-card{
+                                background-color: #C4C4C448;
+                            }
+    
+                            .suyool-custom{
+                                 background-color: #E8F0F4;
+                            }
+    
+                            .card {
+                                padding: 15px;
+                                box-shadow: 0px 5px 12px #EFF1F93D;
+                                border: 2px solid #373464;
+                                border-radius: 10px;
+    
+                                .card-value{
+                                    color: #626679;
+                                    font-size: 22px;
+                                    font-family: Poppins Bold;
+                                }
+    
+                                .card-label {
+                                    color: #626679;
+                                    font-family: Poppins Regular;
+                                    font-size: 20px;
+                                }
+
+                                .card-label-download{
+                                    color: #373464;
+                                    text-decoration: underline;
+                                    font-size: 20px;
+                                    font-family: Poppins SemiBold;
+                                    text-align: center;
+                                    cursor: pointer;
+                                }
+                            }
+                        
+                        }
+                    }
+                }
+            }
+    
+            .tabs-and-details{
+                background-color: white;
+                box-shadow: 2px 3px 10px #7777771A;
+                border-radius: 3px;
+                width: 70%;
+                
+                .tabs-container {
+                    padding: 20px;
+                    
+                    .tabs {
+                        display: flex;
+                        justify-content: space-between;
+                        border-bottom: 1px solid #d4d4d483;
+                      
+                        .tab {
+                          font-family: Circular Std Book Regular;
+                          font-size: 18px;
+                          color: #464A53;
+                          cursor: pointer;
+                          padding-bottom: 10px; 
+                          position: relative; 
+                          transition: color 0.2s ease;
+                      
+                          &::after {
+                            content: "";
+                            position: absolute;
+                            bottom: -2px;
+                            left: 0;
+                            right: 0;
+                            height: 3px;
+                            background-color: transparent; 
+                            transition: all 0.2s ease;
+                          }
+                      
+                          &:hover::after {
+                            background-color: #226D96;
+                          }
+                      
+                          &.active {
+                            font-family: Poppins Medium;
+                            color: #000;
+                      
+                            &::after {
+                              background-color: #226D96; 
+                            }
+                          }
+                        }
+                      }
+                      
+                      
+
+                    .details-container{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+                        padding: 40px;
+
+                        .title {
+                            color: #226D96;
+                            font-size: 22px;
+                            font-family: Circular Std Book Regular;
+                        }
+
+                        .detail-item {
+                            display: flex;
+                            justify-content: space-between;
+                            width: 28%;
+
+                            .key {
+                                color: #464A53;
+                                font-size: 16px;
+                                font-family: Circular Std Book Regular;      
+                            }
+
+                            .value {
+                                color: #ABAFB3;
+                                font-size: 16px;
+                                font-family: Circular Std Book Regular;
+                            }
+                        }
+                        
+
+                    }
+                }
+            }
+        }
+    }
+}

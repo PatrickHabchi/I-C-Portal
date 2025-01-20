@@ -1,0 +1,450 @@
+.sidebar {
+    max-width: 100% !important;
+  
+    .navLinkClicked {
+      background: unset;
+    }
+  
+    .navLink {
+      background: unset;
+    }
+  
+    .left::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .left {
+      position: fixed;
+      background-color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      // overflow-y: auto;
+  
+      @media (min-width: 992px) {
+        position: fixed;
+        width: 300px;
+      }
+  
+      @media(max-width: 991px){
+        display: none;
+      }
+  
+      //@media print {
+      //  position: unset !important;
+      //}
+  
+  
+      .Logo {
+        background-color: #f2f2f2;
+        height: 75px;
+        padding: 0px 0;
+        text-align: center;
+  
+        img {
+          width: 160px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+      .scrollSection {
+        height: calc(100vh - 75px);
+        display: flex;
+        overflow: hidden;
+        overflow-y: auto;
+        flex-direction: column;
+  
+        .Title {
+          font-family: Poppins Regular;
+          color: #576271;
+          font-size: 15px;
+          padding: 40px 30px 10px 30px;
+        }
+  
+        .subTitle {
+          padding: 5px 5px 5px 45px;
+          font-family: Poppins Regular;
+          color: #576271;
+          font-size: 15px;
+        }
+  
+        .subTitleClicked {
+          background-color: #d7d7e2;
+          color: #373464;
+          font-family: Poppins Medium;
+          font-size: 15px;
+          padding: 10px 5px 10px 45px;
+          border-left: 3px solid #373464;
+          display: flex;
+          align-items: center;
+        }
+  
+        .subTitle,
+        .subTitleClicked {
+          span {
+            color: #ffffff;
+            background: #d32127;
+            border-radius: 50%;
+            padding: 1px 6px;
+            height: 20px;
+            font-size: 12px;
+            font-family: "Poppins Regular";
+          }
+        }
+  
+        .btn_container {
+          margin: 30px 0;
+          border-top: 1px solid rgb(201, 199, 199);
+          border-bottom: 1px solid rgb(201, 199, 199);
+          text-align: center;
+  
+          .btn-sub {
+            // background-color: #94b8cc;
+            display: flex;
+            flex-direction: column;
+            margin: 30px 30px;
+            border-radius: 10px;
+  
+            .newTransaction {
+              background-color: #226d96;
+              color: white;
+              font-family: Poppins SemiBold;
+              font-size: 13px;
+              border-radius: 5px;
+              padding: 9px 42px;
+            }
+          }
+        }
+  
+        .btn_container_True {
+          margin: 30px 0;
+          border-top: 1px solid rgb(201, 199, 199);
+          border-bottom: 1px solid rgb(201, 199, 199);
+          text-align: center;
+  
+          .btn-list {
+            background-color: #94b8cc;
+            display: flex;
+            flex-direction: column;
+            margin: 30px 30px;
+            border-radius: 10px;
+  
+            .newTransaction {
+              margin: 5px;
+              background-color: #226d96;
+              color: white;
+              font-family: Poppins SemiBold;
+              font-size: 13px;
+              border-radius: 5px;
+              padding: 10px 42px;
+            }
+  
+            .Transaction {
+              margin: 5px;
+              background-color: white;
+              border: 1px solid #226d96;
+              color: #226d96;
+              font-family: Poppins SemiBold;
+              font-size: 13px;
+              border-radius: 5px;
+              padding: 9px 42px;
+            }
+          }
+        }
+  
+        .bottomSide {
+          padding: 30px 0px 30px 30px;
+  
+          .Support {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+  
+            p {
+              color: #226d96;
+              font-family: Libre Franklin Bold;
+              font-size: 20px;
+              padding-left: 10px;
+            }
+  
+            img {
+              width: 25px;
+              height: 25px;
+              margin-bottom: 15px;
+            }
+          }
+  
+          p {
+            font-family: Libre Franklin Medium;
+            padding: 5px 0;
+            color: #576271;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  
+    .right {
+      background-color: #f7f9fb;
+  
+      @media (min-width: 992px) {
+        margin-left: 300px;
+      }
+  
+      @media print {
+        margin-left: 0 !important;
+      }
+  
+      .header {
+        background-color: white;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        padding: 0 30px;
+        justify-content: space-between;
+  
+        .company-name {
+          display: flex;
+          align-items: center;
+          color: #373464;
+          font-size: 17px;
+          font-family: Poppins Regular;
+        }
+  
+        .barsBtn {
+          color: #373464;
+          font-size: 26px;
+        }
+  
+        .dropdown {
+          .dropdown-toggle {
+            background: unset;
+            border: unset;
+            color: #373464;
+            font-size: 26px;
+            display: flex;
+          }
+  
+          .dropdown-toggle::after {
+            margin-top: 24px;
+            font-size: 15px;
+          }
+        }
+  
+        .userInfo {
+          display: flex;
+          align-items: center;
+  
+          .user {
+            display: flex;
+            align-items: center;
+            width: auto;
+  
+            .user-profile {
+              min-width: 55px;
+            }
+  
+            img {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+            }
+  
+            p {
+              font-family: 'Poppins Regular';
+              font-size: 12px;
+              color: #6a707e;
+              padding-top: 18px;
+              padding-left: 5px;
+            }
+            .p-username{
+              font-family: 'Poppins Bold';
+              color: black;
+  
+            }
+        
+          }
+        }
+      }
+    }
+  
+    .legal-list {
+  
+      .active {
+        background-color: #d7d7e2;
+        height: 52px;
+        padding-top: 7px;
+      }
+  
+      .legal,
+      .merchant {
+        cursor: pointer;
+      }
+  
+      .legal {
+        padding-left: 20px;
+        display: flex;
+        margin-bottom: 20px;
+        .p-subname{
+          font-family: 'Poppins Medium';
+          color: black;
+    
+        }
+        span {
+          margin-top: 9px;
+          margin-left: 5px;
+          font-family: Poppins Regular;
+          font-size: 16px;
+          color: #464a53;
+        }
+  
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
+  
+      .merchant-list {
+        margin-left: 50px;
+        margin-top: -15px;
+  
+        a:hover {
+          background-color: initial;
+          color: initial;
+        }
+  
+        .merch-active {
+          .round {
+            background-color: #373464;
+          }
+        }
+  
+        .merchant {
+          margin-bottom: 50px;
+          display: flex;
+          font-size: 18px;
+          font-family: Poppins Regular;
+          color: #464a53;
+          height: 0;
+          margin-top: -15px;
+  
+          span {
+            position: relative;
+            top: 2px;
+          }
+  
+          .round {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid #373464;
+            margin-right: 10px;
+            position: relative;
+            top: 10px;
+          }
+  
+          .line {
+            border: 1px solid #464a53;
+            position: relative;
+            top: 20px;
+            left: -16px;
+            height: 35px;
+          }
+        }
+      }
+  
+      .logout {
+        font-family: Poppins Regular;
+        font-size: 16px;
+        color: #464a53;
+        margin-bottom: 20px;
+        padding-left: 20px;
+      }
+    }
+  }
+  
+  .modal-header-image {
+    img {
+      margin: auto;
+    }
+  }
+  
+  @media only screen and (min-width: 991px) and (max-width: 1600px) {
+    .sidebar {
+      .left {
+        .Title {
+          font-size: 13px;
+          padding: 40px 5px 0 20px;
+        }
+  
+        .subTitle {
+          padding: 10px 5px 10px 30px;
+          font-size: 13px;
+        }
+  
+        //.subTitle:hover {
+        //  font-size: 13px !important;
+        //  padding: 10px 5px 10px 10px !important;
+        //}
+  
+        .subTitleClicked {
+          font-size: 13px;
+          padding: 10px 5px 10px 30px;
+        }
+  
+        .bottomSide {
+          padding: 29px 0px 30px 30px;
+  
+          .Support {
+            p {
+              font-size: 16px;
+            }
+          }
+  
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+  
+      .right {
+        .header {
+          .company-name {
+            display: none;
+          }
+        }
+      }
+  
+      .btn-list {
+        .newTransaction,
+        .Transaction {
+          padding: 9px 0 !important;
+        }
+      }
+  
+      .legal-list {
+        .legal {
+          margin-bottom: 10px;
+          span {
+            font-size: 14px;
+          }
+        }
+  
+        .merchant-list {
+          margin-left: 25px;
+          margin-top: -15px;
+  
+          .merchant {
+            margin-bottom: 40px;
+            font-size: 14px;
+  
+            .line {
+              height: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+  

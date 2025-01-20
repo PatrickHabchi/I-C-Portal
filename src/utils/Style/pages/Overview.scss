@@ -1,0 +1,178 @@
+.OverviewPage {
+    margin: 20px;
+    .accounts-box {
+        display: flex;
+        margin-bottom: 20px;
+        gap: 20px;
+
+        .accountDetail {
+            border-radius: 5px;
+            padding: 35px 30px;
+            background-color: white;
+            box-shadow: 0.47px 3px 10px #7777771A;
+
+            .cardTitle {
+                font-family: Poppins Regular;
+                color: #464A53;
+                font-size: 18px;
+            }
+    
+            .accountBalance {
+                font-size: 49px;
+                font-family: Poppins SemiBold;
+                color: #373464;
+                padding: 0;
+            }
+    
+            .accountAmount {
+                display: flex;
+                justify-content: flex-start;
+                gap: 100px;
+
+                .balance {
+                    font-size: 20px;
+                    color: #373464;
+                    font-family: Poppins Medium;
+                }
+
+                .amountType {
+                    font-size: 15px;
+                    color: #6A707E;
+                    font-family: Poppins Regular;
+                }
+            }
+        }
+    }
+
+    .Orders{
+        margin-bottom: 20px;
+        .title {
+            font-size: 22px;
+            font-family: Poppins Regular;
+            color: #464A53;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .orders-box{
+            display: flex;
+            gap: 15px;
+            
+            .OrdersDetail {
+                border-radius: 5px;
+                padding: 15px 30px;
+                background-color: white;
+                box-shadow: 0.47px 3px 10px #7777771A;
+
+
+                .card-header{
+                    display: flex;
+                    justify-content: space-between;
+
+                    .order-type {
+
+                        .order-count {
+                            color: #3D4655;
+                            font-size: 50px;
+                            font-family: Poppins SemiBold;
+                        }
+
+                        .order-title {
+                            color: #3D4655;
+                            font-size: 19px;
+                            font-family: Poppins Regular;
+                        }
+                    }
+                }
+
+                .orderStatus{
+                    display: flex;
+                    gap: 47px;
+
+                    .statusOfOrder {
+
+                        .count {
+                            font-size: 20px;
+                            color: #373464;
+                            font-family: Poppins Medium;
+                        }
+
+                        .status-type {
+                            color: #6A707E;
+                            font-size: 15px;
+                            font-family: Poppins Regular;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .tables{
+        display: flex;
+        gap: 30px;
+        .table-title {
+            font-size: 22px;
+            color: #464A53;
+            font-family: Poppins Regular;
+        }
+
+        .view-all {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: -65px;
+            .view-btn {
+                color: #464A53;
+                background-color: #F0F0F2;
+                font-family: Poppins Regular;
+                border: 1px solid #CACACA;
+                padding: 10px 15px;
+            }
+        }
+
+        .LatestApplication {
+            width: 50%;
+        }
+
+        .LatestTransaction {
+            width: 50%;
+        }
+    }
+
+    .status {
+        width: 100%;
+        height: 25px;
+        border-radius: 3px;
+        text-align: center;
+        color: #fff;
+        padding-top: 2px;
+        margin: 0;
+        font-family: Poppins SemiBold;
+    }
+
+    .PENDING {
+        color: #E2AB46;
+        background-color: #FCF6EA;
+    }
+
+    .DOCUMENTS {
+        color: #C23431;
+        background-color: #F8E6E9;
+    }
+
+    .CANCELLED {
+        color: #5E6A7A;
+        background-color: #EEF0F1;
+    }
+
+    .NEW {
+        color: #3267AD;
+        background-color: #e8eef6;
+    }
+
+    .COMPLETE {
+        color: #64BE67;
+        background-color: #e6f8e7;
+    }
+
+}
