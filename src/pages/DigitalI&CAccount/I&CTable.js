@@ -19,9 +19,6 @@ function ICTable() {
             dispatch(setActiveButton("Digital I&C Account Details"));
         };
         
-
-    
-
     const ICData = useMemo(() => [
         {
           entityID: "4df4710afg47..",

@@ -9,17 +9,22 @@ import { capitalizeFirstLetters } from '../components/features/ValueFormater'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
 import useGetDataApi from '../api/GetDataApi'
+import { useDispatch,useSelector } from "react-redux";
 
 function Overview() {
 
   const [activeRowIndex, setActiveRowIndex] = useState(-1);
-
+ 
   const { GetData } = useGetDataApi();
 
   useEffect(() => {
     GetData();
   }, [])
+  const userData = useSelector((state) => state.appData?.userData);
 
+  console.log(userData); 
+
+  
   const applicationColumns = useMemo(() => [
       {
         Header: "Entity ID",
@@ -93,7 +98,7 @@ function Overview() {
 const latestApplicationData = useMemo(() => [
   {
     entityID: "4df4710afg47..",
-    fullName: "Aya I. Joumaa",
+    fullName:"",
     Date: "31 Oct 2024",
     status: "New"
   },
