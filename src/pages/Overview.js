@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import HeaderComponent from '../components/HeaderComponents'
 import AccountsSection from '../components/Overview/AccountsSection'
 import '../utils/Style/pages/Overview.scss'
@@ -8,11 +8,17 @@ import Table from '../components/Table'
 import { capitalizeFirstLetters } from '../components/features/ValueFormater'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import useGetDataApi from '../api/GetDataApi'
 
 function Overview() {
 
   const [activeRowIndex, setActiveRowIndex] = useState(-1);
 
+  const { GetData } = useGetDataApi();
+
+  useEffect(() => {
+    GetData();
+  }, [])
 
   const applicationColumns = useMemo(() => [
       {
@@ -120,7 +126,7 @@ const latestApplicationData = useMemo(() => [
 ], [])
 
 
-  const latestTransactionData = useMemo(() => [
+const latestTransactionData = useMemo(() => [
     {
       transactionID: "4df4710afg47..",
       fullName: "Aya I. Joumaa",
