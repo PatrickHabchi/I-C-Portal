@@ -18,9 +18,21 @@ function useGetDataApi() {
       return null; 
     }
   };
+  const GetAllUSerData = async () => {
+    try {
+      const response = await axios.get(`http://10.20.80.79/getData`);
+      dispatch(settingData({ field: "userAllData", value: response.data.data }));
+      console.log(response.data.data);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return null; 
+    }
+  };
 
   return {
     GetData,
+    GetAllUSerData
   };
 }
 

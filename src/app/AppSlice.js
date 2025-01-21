@@ -12,6 +12,7 @@ const initialState = {
   },
   popup: false,
   userData: {}, 
+  userAllData: {}, 
 };
 
 const AppSlice = createSlice({
