@@ -7,6 +7,7 @@ import { faLessThan } from '@fortawesome/free-solid-svg-icons';
 function DigitalICAccountDetails() {
 
   const activeTab = useSelector((state) => state.digitalICaccount.activeTab);
+  const userData = useSelector((state) => state.appData.userData);
   const dispatch = useDispatch();
 
   useEffect(() => {

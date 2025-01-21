@@ -16,13 +16,13 @@ function Overview() {
   const [activeRowIndex, setActiveRowIndex] = useState(-1);
  
   const { GetData } = useGetDataApi();
+  const userData = useSelector((state) => state.appData.userData);
+
 
   useEffect(() => {
     GetData();
-  }, [])
-  const userData = useSelector((state) => state.appData?.userData);
-
-  console.log(userData); 
+  }, []);
+  console.log(userData.FirstName); 
 
   
   const applicationColumns = useMemo(() => [
@@ -95,11 +95,11 @@ function Overview() {
     },
 ], [])
 
-const latestApplicationData = useMemo(() => [
+const latestApplicationData = [
   {
     entityID: "4df4710afg47..",
-    fullName:"",
-    Date: "31 Oct 2024",
+    fullName: userData?.FirstName,
+    Date: userData?.DateOfBirth,
     status: "New"
   },
   {
@@ -128,7 +128,9 @@ const latestApplicationData = useMemo(() => [
     Date: "31 Oct 2024",
     status: "Complete",
   },
-], [])
+];
+
+
 
 
 const latestTransactionData = useMemo(() => [

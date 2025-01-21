@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useDispatch } from "react-redux";
-import { settingData, settingObjectData } from "../Redux/Slices/AppSlice";
+import { settingData, settingObjectData } from "../app/AppSlice";
 
 function useGetDataApi() {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ function useGetDataApi() {
     try {
       const response = await axios.get(`http://10.20.80.79/getData/${phoneNumber}`);
       dispatch(settingData({ field: "userData", value: response.data.data }));
-      console.log(response.data);
+      console.log(response.data.data);
       return response.data;
     } catch (error) {
       console.error('Error fetching data:', error);
