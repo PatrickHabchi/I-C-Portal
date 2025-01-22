@@ -11,8 +11,8 @@ const initialState = {
     currentPage: "",
   },
   popup: false,
-  userData: {}, 
-  userAllData: {}, 
+  userData: [], 
+  singleUserData: {}, 
 };
 
 const AppSlice = createSlice({
@@ -36,6 +36,7 @@ const AppSlice = createSlice({
       state.userData = {
         user: {},
       };
+      state.singleUserData = {}
     },
   },
 });

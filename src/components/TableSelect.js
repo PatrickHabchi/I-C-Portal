@@ -7,9 +7,6 @@ const TableSelect = (props) => {
     const componentRef = useRef(null);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-    const handleRowClick = (row) => {
-        props.handleRowClick(row); // Ensure this calls the passed function
-    };
 
     useEffect(() => {
         const handleResize = () => setScreenWidth(window.innerWidth);
@@ -84,7 +81,7 @@ const TableSelect = (props) => {
                                     <tr
                                         {...row.getRowProps()}
                                         className={isDisabled ? "trdisabled" : isActive ? "tractive" : ""}
-                                        onClick={() => handleRowClick(row)}
+                                        onClick={() => props.handleRowClick(row)} 
                                         style={{ cursor: "pointer"}}
                                     >
                                         {row.cells.map((cell) => {
@@ -97,7 +94,7 @@ const TableSelect = (props) => {
                                                     onClick={() => {
                                                         const key = cell.getCellProps().key.toString();
                                                         if (!key.includes("Action") && !key.includes("Code")) {
-                                                            handleRowClick(row);
+                                                            // props.handleRowClick(row);
                                                         }
                                                     }}
                                                 >

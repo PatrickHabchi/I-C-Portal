@@ -9,7 +9,6 @@ import DigitalICAccountDetails from './DigitalICAccountDetails.js';
 
 function DigitalICAccount() {
 
-
     const activeButton = useSelector((state) => state.digitalICaccount.activeButton);
 
     const dispatch = useDispatch();

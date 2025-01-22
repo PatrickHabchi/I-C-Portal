@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     activeButton: "",
-    activeTab: ""
+    activeTab: "",
+    phoneNumber: ""
 }
 
 const DigitalICAccountSlice = createSlice({
@@ -14,10 +15,13 @@ const DigitalICAccountSlice = createSlice({
         },
         setActiveTab: (state, action) => {
             state.activeTab = action.payload;
+        },
+        setPhoneNumber: (state, action) => {
+            state.phoneNumber = action.payload;
         }
     }
 })
 
-export const { setActiveButton, setActiveTab } = DigitalICAccountSlice.actions;
+export const { setActiveButton, setActiveTab, setPhoneNumber } = DigitalICAccountSlice.actions;
 
 export default DigitalICAccountSlice.reducer;

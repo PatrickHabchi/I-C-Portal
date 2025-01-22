@@ -1,80 +1,60 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Table from '../../components/Table'
 import { useTable } from 'react-table';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faGreaterThan } from '@fortawesome/free-solid-svg-icons';
 import { capitalizeFirstLetters } from '../../components/features/ValueFormater';
 import TableSelect from '../../components/TableSelect';
-import { useDispatch } from 'react-redux';
-import { setActiveButton } from '../../app/DigitalI&CAccountSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveButton, setPhoneNumber } from '../../app/DigitalI&CAccountSlice';
+import UtcToLocal from '../../utils/UTCToLocal';
+import useGetDataApi from '../../api/GetDataApi';
 
 function ICTable() {
 
     const [activeRowIndex, setActiveRowIndex] = useState(-1);
     const [filterStatus, setFilterStatus] = useState("");
-    const [selectedRow, setSelectedRow] = useState(null)
+    
+    const userData = useSelector((state) => state.appData.userData);
+
+    const { GetData, GetAllUserData } = useGetDataApi();
+
+    useEffect(() => {
+        GetAllUserData();
+    }, [])
+
     const dispatch = useDispatch();
 
-        const handleRowClick = (row) => {
-            dispatch(setActiveButton("Digital I&C Account Details"));
+        const handleRowClick = async (row) => {
+            try {
+                const response = await GetData();
+
+                dispatch(setPhoneNumber(row.original.PhoneNumber))
+                if (response) {
+                    dispatch(setActiveButton("Digital I&C Account Details"));
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        
         };
         
-    const ICData = useMemo(() => [
-        {
-          entityID: "4df4710afg47..",
-          fullName: "Aya I. Joumaa",
-          CreationDate: "31 Oct 2024",
-          Type: "Individual",
-          DateOfBirth: "10/09/1987",
-          CountryOfBirth: "Lebanon",
-          status: "New"
-        },
-        {
-        entityID: "4df4710afg47..",
-        fullName: "Aya I. Joumaa",
-        CreationDate: "31 Oct 2024",
-        Type: "Individual",
-        DateOfBirth: "10/09/1987",
-        CountryOfBirth: "Lebanon",
-        status: "Cancelled"
-        },
-        {
-        entityID: "4df4710afg47..",
-        fullName: "Aya I. Joumaa",
-        CreationDate: "31 Oct 2024",
-        Type: "Individual",
-        DateOfBirth: "10/09/1987",
-        CountryOfBirth: "Lebanon",
-        status: "Pending Compliance"
-        },
-        {
-        entityID: "4df4710afg47..",
-        fullName: "Aya I. Joumaa",
-        CreationDate: "31 Oct 2024",
-        Type: "Individual",
-        DateOfBirth: "10/09/1987",
-        CountryOfBirth: "Lebanon",
-        status: "Pending Documents"
-        },
-        {
-        entityID: "4df4710afg47..",
-        fullName: "Aya I. Joumaa",
-        CreationDate: "31 Oct 2024",
-        Type: "Individual",
-        DateOfBirth: "10/09/1987",
-        CountryOfBirth: "Lebanon",
-        status: "Complete"
-        },
-      ], [])
+
+        const options = {
+            weekday: "short",
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          };
 
       const applicationColumns = useMemo(() => [
         {
             Header: "Entity ID",
-            accessor: "entityID"
+            accessor: "id"
         },
         {
             Header: "Full Name",
-            accessor: "fullName"
+            accessor: "FirstName"
         },
         {
             Header: "",
@@ -94,22 +74,25 @@ function ICTable() {
             accessor: "Type"
         }, 
         {
-            Header: "Date of Birth",
-            accessor: "DateOfBirth"
-        },
+            Header: "Date",
+            accessor: "DateOfBirth",
+            Cell: ({ cell: { value } }) => {
+              return <UtcToLocal utcTimestamp={value} options={options} />;
+            },
+          },
         {
             Header: "Country of Birth",
             accessor: "CountryOfBirth"
         },
         {
             Header: "Status",
-            accessor: "status",
+            accessor: "Status",
             Cell: ({ cell: { value } }) => {
-                if (["new", "cancelled", "complete", "pending compliance", "pending documents"].includes(value.toLowerCase())) {
-                    return <div className={"status " + value?.toUpperCase()}>{capitalizeFirstLetters(value)}</div>
-                }
-            }
-        },
+              if (["New", "Cancelled", "Complete", "Pending Compliance", "Pending Documents"].includes(value)) {
+                return <div className={"status " + value?.toUpperCase()}>{capitalizeFirstLetters(value)}</div>
+              }
+            },
+          },
         {
             Header: "",
             accessor: "detailsUser",
@@ -123,9 +106,9 @@ function ICTable() {
 
     
     const filteredData = useMemo(() => {
-        if (!filterStatus) return ICData;
-        return ICData.filter(row => row.status.toLowerCase() === filterStatus.toLowerCase());
-    }, [filterStatus, ICData]);
+        if (!filterStatus) return userData;
+        return userData.filter(row => row.Status === filterStatus);
+    }, [filterStatus, userData]);
     
     const applicationTable = useTable({ columns: applicationColumns, data: filteredData})
 
@@ -208,15 +191,15 @@ function ICTable() {
         </div>
         {}
         <TableSelect
-                    headerGroups={applicationTable.headerGroups}
-                    page={applicationTable.rows}
-                    prepareRow={applicationTable.prepareRow}
-                    getTableProps={applicationTable.getTableProps}
-                    getTableBodyProps={applicationTable.getTableBodyProps}
-                    activeRowIndex={activeRowIndex}
-                    setActiveRowIndex={setActiveRowIndex}
-                    handleRowClick={handleRowClick}
-                />
+            headerGroups={applicationTable.headerGroups}
+            page={applicationTable.rows}
+            prepareRow={applicationTable.prepareRow}
+            getTableProps={applicationTable.getTableProps}
+            getTableBodyProps={applicationTable.getTableBodyProps}
+            activeRowIndex={activeRowIndex}
+            setActiveRowIndex={setActiveRowIndex}
+            handleRowClick={handleRowClick}
+        />
         </div>
 
 

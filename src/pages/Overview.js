@@ -10,29 +10,35 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
 import useGetDataApi from '../api/GetDataApi'
 import { useDispatch,useSelector } from "react-redux";
+import UtcToLocal from '../utils/UTCToLocal'
 
 function Overview() {
 
   const [activeRowIndex, setActiveRowIndex] = useState(-1);
  
-  const { GetData } = useGetDataApi();
+  const { GetData, GetAllUserData } = useGetDataApi();
   const userData = useSelector((state) => state.appData.userData);
 
-
   useEffect(() => {
-    GetData();
+    GetAllUserData();
   }, []);
-  console.log(userData.FirstName); 
 
+
+  const options = {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  };
   
   const applicationColumns = useMemo(() => [
       {
         Header: "Entity ID",
-        accessor: "entityID"
+        accessor: "id"
       },
       {
         Header: "Full Name",
-        accessor: "fullName"
+        accessor: "FirstName"
       },
       {
         Header: "",
@@ -45,27 +51,30 @@ function Overview() {
     },
       {
         Header: "Date",
-        accessor: "Date"
+        accessor: "DateOfBirth",
+        Cell: ({ cell: { value } }) => {
+          return <UtcToLocal utcTimestamp={value} options={options} />;
+        },
       },
       {
         Header: "Status",
-        accessor: "status",
+        accessor: "Status",
         Cell: ({ cell: { value } }) => {
-          if (["new", "cancelled", "complete", "pending compliance", "pending documents"].includes(value.toLowerCase())) {
-              return <div className={"status " + value?.toUpperCase()}>{capitalizeFirstLetters(value)}</div>
+          if (["New", "Cancelled", "Complete", "Pending Compliance", "Pending Documents"].includes(value)) {
+            return <div className={"status " + value?.toUpperCase()}>{capitalizeFirstLetters(value)}</div>
           }
-      }
+        },
       },
   ], [])
 
   const transactionColumns = useMemo(() => [
     {
       Header: "Transaction ID",
-      accessor: "transactionID"
+      accessor: "id"
     },
     {
       Header: "Full Name",
-      accessor: "fullName"
+      accessor: "FirstName"
     },
     {
       Header: "",
@@ -82,99 +91,27 @@ function Overview() {
     },
     {
       Header: "Date",
-      accessor: "Date"
+      accessor: "DateOfBirth",
+      Cell: ({ cell: { value } }) => {
+        return <UtcToLocal utcTimestamp={value} options={options} />;
+      },
     },
     {
       Header: "Status",
-      accessor: "status",
+      accessor: "Status",
       Cell: ({ cell: { value } }) => {
-        if (["new", "cancelled", "complete", "pending compliance", "pending documents"].includes(value.toLowerCase())) {
-            return <div className={"status " + value?.toUpperCase()}>{capitalizeFirstLetters(value)}</div>
+        if (["New", "Cancelled", "Complete", "Pending Compliance", "Pending Documents"].includes(value)) {
+          return <div className={"status " + value?.toUpperCase()}>{capitalizeFirstLetters(value)}</div>
         }
-    }
+      },
     },
 ], [])
 
-const latestApplicationData = [
-  {
-    entityID: "4df4710afg47..",
-    fullName: userData?.FirstName,
-    Date: userData?.DateOfBirth,
-    status: "New"
-  },
-  {
-    entityID: "4df4710afg47..",
-    fullName: "Aya I. Joumaa",
-    Date: "31 Oct 2024",
-    status: "Cancelled"
-  },
-  {
-    entityID: "4df4710afg47..",
-    fullName: "Aya I. Joumaa",
-    Date: "31 Oct 2024",
-    status: "Pending Compliance"
-  },
-  {
-    entityID: "4df4710afg47..",
-    fullName: "Aya I. Joumaa",
-    Type: "Outward",
-    Date: "31 Oct 2024",
-    status: "Pending Documents",
-  },
-  {
-    entityID: "4df4710afg47..",
-    fullName: "Aya I. Joumaa",
-    Type: "Outward",
-    Date: "31 Oct 2024",
-    status: "Complete",
-  },
-];
 
 
+const applicationTable = useTable({ columns: applicationColumns, data: userData})
 
-
-const latestTransactionData = useMemo(() => [
-    {
-      transactionID: "4df4710afg47..",
-      fullName: "Aya I. Joumaa",
-      Type: "Inward",
-      Date: "31 Oct 2024",
-      status: "New"
-    },
-    {
-      transactionID: "4df4710afg47..",
-      fullName: "Aya I. Joumaa",
-      Type: "Inward",
-      Date: "31 Oct 2024",
-      status: "Cancelled"
-    },
-    {
-      transactionID: "4df4710afg47..",
-      fullName: "Aya I. Joumaa",
-      Type: "Inward",
-      Date: "31 Oct 2024",
-      status: "Pending Compliance"
-    },
-    {
-      transactionID: "4df4710afg47..",
-      fullName: "Aya I. Joumaa",
-      Type: "Outward",
-      Date: "31 Oct 2024",
-      status: "Pending Documents",
-    },
-    {
-      transactionID: "4df4710afg47..",
-      fullName: "Aya I. Joumaa",
-      Type: "Outward",
-      Date: "31 Oct 2024",
-      status: "Complete",
-    },
-  ], [])
-
-
-const applicationTable = useTable({ columns: applicationColumns, data: latestApplicationData})
-
-const transactionTable = useTable({ columns: transactionColumns, data: latestTransactionData})
+const transactionTable = useTable({ columns: transactionColumns, data: userData})
 
 
   return (

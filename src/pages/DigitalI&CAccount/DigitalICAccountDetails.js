@@ -3,11 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setActiveButton, setActiveTab } from '../../app/DigitalI&CAccountSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLessThan } from '@fortawesome/free-solid-svg-icons';
+import UtcToLocal from '../../utils/UTCToLocal';
 
 function DigitalICAccountDetails() {
 
   const activeTab = useSelector((state) => state.digitalICaccount.activeTab);
   const userData = useSelector((state) => state.appData.userData);
+  const singleUserData = useSelector((state) => state.appData.singleUserData);
+
+  console.log(singleUserData);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,25 +29,25 @@ function DigitalICAccountDetails() {
 
   const tabContent = {
     "Personal Info": [
-      { key: "First Name", value: "Tarek" },
-      { key: "Last Name", value: "Haddad" },
-      { key: "Mother Name", value: "SOTIRA" },
+      { key: "First Name", value: singleUserData.FirstName },
+      { key: "Last Name", value: singleUserData.FirstName },
+      { key: "Mother Name", value: singleUserData.MotherName },
     ],
     Citizenship: [
-      { key: "Country", value: "Lebanon" },
+      { key: "Country", value: singleUserData.CountryOfActivity },
       { key: "Nationality", value: "Lebanese" },
     ],
     Address: [
-      { key: "City", value: "Beirut" },
-      { key: "Street", value: "Hamra Street" },
+      { key: "City", value: singleUserData.City },
+      { key: "Street", value: singleUserData.StreetNameNumber },
     ],
     "Business Information": [
-      { key: "Company", value: "Suyool Inc." },
-      { key: "Position", value: "Manager" },
+      { key: "Company", value: singleUserData.NameOfCompany },
+      { key: "Position", value: singleUserData.JobTitle },
     ],
     "Account Information": [
-      { key: "Account Type", value: "Individual" },
-      { key: "Status", value: "New" },
+      { key: "Account Type", value: singleUserData.Type },
+      { key: "Status", value: singleUserData.Status },
     ],
   };
 
@@ -52,9 +57,36 @@ function DigitalICAccountDetails() {
         color: "#3267AD",
         backgroundColor: "#e8eef6",
       };
-    }
+    } else if (value === "Pending Compliance") {
+        return {
+          color: "#E2AB46",
+          backgroundColor: "#FCF6EA",
+        }
+    } else if (value === "Cancelled") {
+      return {
+        color: "#5E6A7A",
+        backgroundColor: "#EEF0F1",
+      }
+    } else if (value === "Pending Documents") {
+      return {
+        color: "#C23431",
+        backgroundColor: "#F8E6E9",
+      }
+    } else if (value === "Complete") {
+      return {
+        color: "#64BE67",
+        backgroundColor: "#e6f8e7",
+      }
+    } 
 
     return {};
+  };
+
+  const options = {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
   };
 
   return (
@@ -66,24 +98,24 @@ function DigitalICAccountDetails() {
       </div>
       <div className='user-info'>
         <div className='user-profile'>
-          <img src='./Images/newApplicationI&C.png' />
+          <img src={`https://ubuntunbk.suyool.com${singleUserData.FrontPhoto}`} />
         </div>
         <div className='user-details'>
           <div className='user-info-container'>
             <div className='user-basic-info'>
               <div className='user-name'>
-                TAREK HADDAD
+                {singleUserData.FirstName} {singleUserData.LastName}
               </div>
-              <div className='user-status' style={handleStatusStyle("New")}>
-                New
+              <div className='user-status' style={handleStatusStyle(singleUserData.Status)}>
+                {singleUserData.Status}
               </div>
             </div>
 
             <div className='user-contact-info'>
               <div className='user-email'>
-                Tarek.Haddad@gmail.com
+                {singleUserData.Email}
               </div>
-              <div className='user-phonenumber'>+961 3 33 33 33</div>
+              <div className='user-phonenumber'>{singleUserData.PhoneNumber}</div>
             </div>
           </div>
         </div>
@@ -95,7 +127,7 @@ function DigitalICAccountDetails() {
           <div className='entity-details'>
             <div className='entityID'>
               <div className='id'>
-                000030
+              {singleUserData.id}
               </div>
               <div className='key'>
                 Entity ID
@@ -105,17 +137,17 @@ function DigitalICAccountDetails() {
 
               <div className='entity-cards'>
                 <div className='card custom-card'>
-                  <div className='card-value'>Individual</div>
+                  <div className='card-value'>{singleUserData.Type}</div>
                   <div className='card-label'>Account Type</div>
                 </div>
 
                 <div className='card'>
-                  <div className='card-value'>30 Oct 2024</div>
+                  <div className='card-value'><UtcToLocal options={options} utcTimestamp={singleUserData.created} /></div>
                   <div className='card-label'>Creation Date</div>
                 </div>
 
                 <div className='card'>
-                  <div className='card-value'>30 Oct 2024</div>
+                  <div className='card-value'><UtcToLocal options={options} utcTimestamp={singleUserData.updated}/></div>
                   <div className='card-label'>Opening Date</div>
                 </div>
 
